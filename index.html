@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tower of Hanoi</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- CSS Part-->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <header>
+    <h1>TOWER OF HANOI</h1>
+    <p>Move all disks to the rightmost peg</p>
+  </header>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="control-group">
+      <label>Disks</label>
+      <select id="diskSelect">
+        <option>3</option><option>4</option><option selected>5</option>
+        <option>6</option><option>7</option><option>8</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="resetGame()">↺ &nbsp;Restart</button>
+    <button class="btn btn-hint" id="hintBtn" onclick="getHint()">◈ &nbsp;Hint</button>
+    <button class="btn btn-solution" onclick="showSolution()">⊞ &nbsp;Solution</button>
+    <button class="btn btn-ghost" onclick="undoMove()">↩ &nbsp;Undo</button>
+    <button class="btn btn-ghost" id="musicBtn" onclick="toggleMusic()">🎵 &nbsp;Music Off</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value" id="statMoves">0</div>
+      <div class="stat-label">Moves</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value gold" id="statMin">0</div>
+      <div class="stat-label">Optimal</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value green" id="statHints">3</div>
+      <div class="stat-label">Hints Left</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="statProgress">0%</div>
+      <div class="stat-label">Progress</div>
+    </div>
+  </div>
+
+  <!-- Message -->
+  <div class="msg-area">
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <!-- Arena -->
+  <div class="arena" id="arena">
+    <div class="tower-wrap" id="tw0" onclick="clickTower(0)">
+      <div class="tower-label">Peg A</div>
+      <div class="tower-body" id="tb0"></div>
+    </div>
+    <div class="tower-wrap" id="tw1" onclick="clickTower(1)">
+      <div class="tower-label">Peg B</div>
+      <div class="tower-body" id="tb1"></div>
+    </div>
+    <div class="tower-wrap" id="tw2" onclick="clickTower(2)">
+      <div class="tower-label">Peg C</div>
+      <div class="tower-body" id="tb2"></div>
+    </div>
+  </div>
+
+  <!-- Log -->
+  <div class="log-panel">
+    <div class="log-header">
+      <span class="log-title">Move History</span>
+      <a class="log-clear" onclick="clearLog()">Clear</a>
+    </div>
+    <div class="log-body" id="log"></div>
+  </div>
+
+</div>
+
+<!-- Win Overlay -->
+<div class="win-overlay" id="winOverlay">
+  <div class="win-card">
+    <div class="win-emoji">🏆</div>
+    <div class="win-title">SOLVED!</div>
+    <div class="win-sub" id="winSub">Congratulations</div>
+    <div class="win-stats">
+      <div class="stat">
+        <div class="stat-value" id="winMoves">—</div>
+        <div class="stat-label">Your Moves</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value gold">—</div>
+        <div class="stat-label">Optimal</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="resetGame()">Play Again</button>
+  </div>
+</div>
+
+<!--JS part-->
+<script src="script.js"></script>
+
+</body>
+</html>
