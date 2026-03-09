@@ -16,6 +16,39 @@ This project demonstrates core computational ideas such as:
 * Constraint-based decision making
 * Optimal solution generation
 
+## AI Perspective: State-Space Representation
+
+In the context of **Artificial Intelligence**, the Tower of Hanoi can be modeled as a **state-space search problem**.
+
+* **State**: A configuration of disks across the three towers
+* **Action**: Moving the top disk from one tower to another valid tower
+* **Goal State**: All disks moved to the destination tower following the constraints
+
+The search process explores transitions between valid states until the goal configuration is reached. The optimal solution requires **2ⁿ − 1 moves**, illustrating recursive decomposition and optimal planning.
+
+### Simplified State-Space Diagram
+
+```mermaid
+graph TD
+
+A[Start State: All Disks on Tower A]
+
+A --> B[Move Disk 1 to Tower C]
+A --> C[Move Disk 1 to Tower B]
+
+B --> D[Move Disk 2 to Tower B]
+C --> E[Move Disk 2 to Tower C]
+
+D --> F[Move Disk 1 to Tower B]
+E --> G[Move Disk 1 to Tower C]
+
+F --> H[Goal State: All Disks on Tower C]
+G --> H
+```
+
+This diagram illustrates how the puzzle can be viewed as a **graph traversal problem**, where each node represents a state and edges represent valid moves between states.
+
+
 ## Live Demo
 
 Play the game here:
