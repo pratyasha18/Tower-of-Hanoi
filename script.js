@@ -535,14 +535,19 @@ function stopMusic() {
 function toggleMusic() {
   const btn = document.getElementById('musicBtn');
   if (musicPlaying) {
+    // music currently playing -> stop it
     stopMusic();
-    btn.textContent = '🎵\u00a0 Music Off';
-    btn.style.opacity = '0.6';
+    musicPlaying = false;
+
+    btn.textContent = '🎵\u00a0 Music On';
+    btn.style.opacity = '1';
   } else {
+    // music currently off -> start it
     initAudio();
     musicPlaying = true;
     scheduleMusic();
-    btn.textContent = '🔇\u00a0 Mute';
-    btn.style.opacity = '1';
+
+    btn.textContent = '🔇\u00a0 Music Off';
+    btn.style.opacity = '0.6';
   }
 }
